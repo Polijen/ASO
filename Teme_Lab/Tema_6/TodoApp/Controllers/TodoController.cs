@@ -25,7 +25,13 @@ public class TodoController : Controller
         };
  
         ViewBag.Filter = filter ?? "all";
-        return View(await query.OrderByDescending(t => t.CreatedAt).ToListAsync());
+
+        // Am adaugat OrderByDescending pentru TaskPriority
+        return View(await query
+                .OrderByDescending(t => t.TaskPriority)
+                .ThenByDescending(t => t.CreatedAt)
+                .ToListAsync());
+
     }
  
     // POST /Todo/Create
@@ -64,4 +70,30 @@ public class TodoController : Controller
         }
         return RedirectToAction(nameof(Index));
     }
+
+    // GET /Todo/Edit/5
+    public async Task<IActionResult> Edit(int id)
+    {
+        var item = await _db.TodoItems.FindAsync(id);
+        if (item is null) return NotFound();
+        
+        return View(item);
+    }
+
+    // POST /Todo/Edit/5
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(int id, TodoItem item)
+    {
+        if (id != item.Id) return BadRequest();
+
+        if (ModelState.IsValid)
+        {
+            _db.TodoItems.Update(item);
+            await _db.SaveChangesAsync();
+            return RedirectToAction(nameof(Index));
+        }
+        return View(item);
+    }
+
 }

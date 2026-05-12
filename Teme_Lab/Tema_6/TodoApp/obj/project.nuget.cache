@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "32Ptxfmnc7U=",
+  "dgSpecHash": "HyXCRvmnwHc=",
   "success": true,
-  "projectFilePath": "/home/polijen/Uni/an3/ASO/Tema_6/TodoApp/TodoApp.csproj",
+  "projectFilePath": "/home/polijen/Uni/an3/ASO/ASO/Teme_Lab/Tema_6/TodoApp/TodoApp.csproj",
   "expectedPackageFiles": [
     "/home/polijen/.nuget/packages/humanizer.core/2.14.1/humanizer.core.2.14.1.nupkg.sha512",
     "/home/polijen/.nuget/packages/microsoft.build.framework/18.0.2/microsoft.build.framework.18.0.2.nupkg.sha512",

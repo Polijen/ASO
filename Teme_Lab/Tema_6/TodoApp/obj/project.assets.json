@@ -2443,11 +2443,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "/home/polijen/Uni/an3/ASO/Tema_6/TodoApp/TodoApp.csproj",
+      "projectUniqueName": "/home/polijen/Uni/an3/ASO/ASO/Teme_Lab/Tema_6/TodoApp/TodoApp.csproj",
       "projectName": "TodoApp",
-      "projectPath": "/home/polijen/Uni/an3/ASO/Tema_6/TodoApp/TodoApp.csproj",
+      "projectPath": "/home/polijen/Uni/an3/ASO/ASO/Teme_Lab/Tema_6/TodoApp/TodoApp.csproj",
       "packagesPath": "/home/polijen/.nuget/packages/",
-      "outputPath": "/home/polijen/Uni/an3/ASO/Tema_6/TodoApp/obj/",
+      "outputPath": "/home/polijen/Uni/an3/ASO/ASO/Teme_Lab/Tema_6/TodoApp/obj/",
       "projectStyle": "PackageReference",
       "configFilePaths": [
         "/home/polijen/.nuget/NuGet/NuGet.Config"

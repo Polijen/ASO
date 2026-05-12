@@ -1,6 +1,13 @@
 using System.ComponentModel.DataAnnotations;
  
 namespace TodoApp.Models;
+
+public enum Priority
+{
+    Low,
+    Medium,
+    High
+}
  
 public class TodoItem
 {
@@ -13,4 +20,8 @@ public class TodoItem
     public bool IsCompleted { get; set; }
  
     public DateTime CreatedAt { get; set; } = DateTime.UtcNow;
+
+	public DateTime? DueDate { get; set; }	
+
+    public Priority TaskPriority { get; set; } = Priority.Medium;
 }

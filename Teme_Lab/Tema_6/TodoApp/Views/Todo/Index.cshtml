@@ -20,6 +20,12 @@
 <form asp-action="Create" method="post" class="d-flex gap-2 mb-4">
     @Html.AntiForgeryToken()
     <input name="Title" class="form-control" placeholder="What needs to be done?" required />
+    <input name="DueDate" type="date" class="form-control w-25" />
+    <select name="TaskPriority" class="form-select w-25">
+        <option value="Low">Low</option>
+        <option value="Medium" selected>Medium</option>
+        <option value="High">High</option>
+    </select>
     <button type="submit" class="btn btn-success px-4">Add</button>
 </form>
  
@@ -47,6 +53,31 @@ else
             <span class="flex-grow-1 @(item.IsCompleted ? "text-decoration-line-through text-muted" : "")">
                 @item.Title
             </span>
+
+            @* Logica nouă pentru Due Date *@
+            @if (item.DueDate.HasValue)
+            {
+                var isOverdue = item.DueDate.Value.Date < DateTime.UtcNow.Date && !item.IsCompleted;
+                var badgeClass = isOverdue ? "bg-danger" : "bg-info";
+                <span class="badge @badgeClass me-3">
+                    ⏳ @item.DueDate.Value.ToString("dd MMM yyyy")
+                </span>
+            }
+
+            @* Logica nouă pentru Prioritate *@
+            @{
+                var priorityClass = item.TaskPriority switch {
+                    TodoApp.Models.Priority.High => "bg-danger",
+                    TodoApp.Models.Priority.Medium => "bg-warning text-dark",
+                    _ => "bg-secondary"
+                };
+            }
+            <span class="badge @priorityClass me-2">
+                @item.TaskPriority
+            </span>
+
+	    @* Buton Editare *@
+            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary btn-sm me-2">✏️</a>
  
             @* Delete button *@
             <form asp-action="Delete" asp-route-id="@item.Id" method="post">
